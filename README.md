@@ -12,7 +12,7 @@ This is my Final Project at III
 
 2014/11/03
 ===============
-1. "Crawer.py" is the code that can get immediately stock price and can clean by itself.it is executed by crontab with 
+1. "Crawer.py" is the code that can get immediately stock price and clean by itself.it is executed by crontab with 
 "shell script".
 2. "Ngram code in shell --scala code" is the code that can make Ngram on spark.
 
