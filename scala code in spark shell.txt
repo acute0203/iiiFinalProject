@@ -1,0 +1,5 @@
+1.在shell下執行spark-shell --jars (jar路徑)//將ngram的jar導入
+2.進入後依下述執行command 
+(1)val files=sc.wholeTextFiles("hdfs:///user/cloudera/news/*.txt")
+(2)val dateAndNgramAndCount=files.flatMap(dirAndNews=>NGramsGenerator.generate(dirAndNews._2.replaceAll("[^\\p{L}\\p{Nd}]+", " ").replaceAll("[0-9]", ""),1,2).map(ngram=>ngram.mkString(" ")).map((dirAndNews._1.substring(dirAndNews._1.lastIndexOf("/")+1,dirAndNews._1.lastIndexOf(".")),_))).map(key=>(key,1)).reduceByKey(_+_).coalesce(1)
+(3)dateAndNgramAndCount.saveAsTextFile("hdfs:///user/cloudera/ngramresult")?
